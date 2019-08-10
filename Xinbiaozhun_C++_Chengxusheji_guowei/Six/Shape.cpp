@@ -6,8 +6,8 @@ class CShape
 public:
 	virtual double Area()
 	{
-		return 0;
-	}
+		
+	};
 	virtual void PrintInfo() {};
 };
 class CRectangle :public CShape
