@@ -4,11 +4,8 @@ using namespace std;
 class CShape
 {
 public:
-	virtual double Area()
-	{
-		
-	};
-	virtual void PrintInfo() {};
+	virtual double Area()=0;//´¿Ðéº¯Êý 
+	virtual void PrintInfo()=0;//´¿Ðéº¯Êý 
 };
 class CRectangle :public CShape
 {
