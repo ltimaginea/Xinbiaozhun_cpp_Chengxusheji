@@ -26,6 +26,7 @@ int main()
 	if (!ioFile)
 	{
 		cout << "open error!" << endl;
+		return 0;
 	}
 	
 	fstream cloneFile(".\\clone.dat", ios::out | ios::binary);
