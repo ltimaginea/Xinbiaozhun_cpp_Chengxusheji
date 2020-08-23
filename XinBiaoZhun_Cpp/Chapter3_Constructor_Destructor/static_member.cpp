@@ -49,8 +49,8 @@ int main()
 	CRectangle r1(2, 5);
 	CRectangle r2(r1);
 	CRectangle::PrintTotal();
-	r1.PrintTotal();						// 等效于 CRectangle::PrintTotal();
-	r2.PrintTotal();						// 等效于 CRectangle::PrintTotal();
+	r1.PrintTotal();				// 等效于 CRectangle::PrintTotal();
+	r2.PrintTotal();				// 等效于 CRectangle::PrintTotal();
 	// cout << CRectangle::totalNumber;		// 错误，totalNumber 是私有的
 	return 0;
 }
