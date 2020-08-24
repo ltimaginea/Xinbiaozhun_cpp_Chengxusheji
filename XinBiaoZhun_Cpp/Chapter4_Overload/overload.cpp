@@ -22,10 +22,10 @@ double Max(double a, double b, double c)
 int main()
 {
 	Max(3, 4);			// 调用 int Max(int,int)
-	Max(2.4, 6.1);		// 调用 double Max(double,double)
+	Max(2.4, 6.1);			// 调用 double Max(double,double)
 	Max(1.2, 3.4, 5);		// 调用 double Max(double,double,double)
-	Max(1, 2, 3);		// 调用 double Max(double,double,double)
-	// Max(3, 1.5);		// 编译出错：二义性
+	Max(1, 2, 3);			// 调用 double Max(double,double,double)
+	// Max(3, 1.5);			// 编译出错：二义性
 	return 0;
 }
 
