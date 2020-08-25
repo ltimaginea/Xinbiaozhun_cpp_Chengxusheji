@@ -6,7 +6,7 @@ using namespace std;
 class CSample
 {
 public:
-	void PrintInfo() const;				// 声明常量成员函数
+	void PrintInfo() const;			// 声明常量成员函数
 };
 void CSample::PrintInfo() const			// 定义常量成员函数
 {
@@ -15,7 +15,7 @@ void CSample::PrintInfo() const			// 定义常量成员函数
 
 int main()
 {
-	const CSample s;					// 定义常量对象
+	const CSample s;			// 定义常量对象
 	s.PrintInfo();
 	return 0;
 }

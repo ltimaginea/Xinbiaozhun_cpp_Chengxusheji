@@ -9,11 +9,11 @@ private:
 	int n;
 public:
 	CSample();
-	void PrintInfo() const;				// 声明常量成员函数
+	void PrintInfo() const;					// 声明常量成员函数
 	void PrintInfo();					// 重载 PrintInfo
 };
 CSample::CSample() :n(1) {}
-void CSample::PrintInfo() const			// 定义常量成员函数
+void CSample::PrintInfo() const					// 定义常量成员函数
 {
 	cout << n << endl;
 }
