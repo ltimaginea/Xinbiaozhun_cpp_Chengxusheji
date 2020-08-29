@@ -9,7 +9,7 @@ class CDemo
 {
 private:
 	const int num;				// 常量型成员变量
-	int& ref;					// 引用型成员变量
+	int& ref;				// 引用型成员变量
 	int value;
 public:
 	CDemo(int n) :num(n), ref(f), value(3) {}
