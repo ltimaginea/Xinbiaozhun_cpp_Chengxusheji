@@ -21,7 +21,7 @@ class CCar						// 封闭类
 private:
 	int price;
 	CTyre tyre;					// 成员对象
-	CEngine engine;				// 成员对象
+	CEngine engine;					// 成员对象
 public:
 	CCar(int p, int tr, int tw) :price(p), tyre(tr, tw) {}
 };
