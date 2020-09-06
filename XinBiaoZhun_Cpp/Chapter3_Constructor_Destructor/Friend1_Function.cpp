@@ -18,7 +18,7 @@ private:
 	int price;
 	friend int MostExpensiveCar(CCar cars[], int total);			// 声明友元
 	friend void CDriver::ModifydCar(CCar* pCar);				// 声明友元
-	//friend void CDriver::PrintInfo();			// 错误！不能把其他类的私有成员函数声明为友元，编译时会提示“无法访问该私有成员”
+	//friend void CDriver::PrintInfo();		// 错误！不能把其他类的私有成员函数声明为友元，编译时会提示“无法访问该私有成员”
 };
 void CDriver::ModifydCar(CCar* pCar)
 {
