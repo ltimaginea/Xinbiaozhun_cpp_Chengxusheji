@@ -33,7 +33,7 @@ void CDriver::PrintPrice()
 int main()
 {
 	CDriver driver;
-	driver.ModifyCar();					// 输出 1010
+	driver.ModifyCar();				// 输出 1010
 	return 0;
 }
 
