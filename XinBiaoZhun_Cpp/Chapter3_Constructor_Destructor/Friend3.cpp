@@ -1,74 +1,48 @@
-﻿// 友元关系不能传递,但是可以多层次递进友元关系。
+﻿// 友元关系不能传递,但是可以多级递进友元关系
 
 #include <iostream>
 
 using namespace std;
 
-class CCar;				// 提前声明 CCar 类，以便后面的 CDriver 类使用
-class My;
-class CDriver
+class CEngine
 {
+private:
+	int enginePrice;
 public:
-	void ModifydCar(CCar* pCar, My* my);
+	CEngine() :enginePrice(1) {}
+	friend class CCar;					// 声明 CCar 为友元类
 };
-
 class CCar
 {
 private:
-	int price;
-	friend void CDriver::ModifydCar(CCar* pCar, My* my);				// 声明友元
-	friend int MostExpensiveCar(CCar cars[], int total);		// 声明友元
+	CEngine engine;
+	void PrintEnginePrice();
+	friend class CDriver;				// 声明 CDriver 为友元类
+};
+class CDriver
+{
 public:
-	void PrintInfo(My* my);
+	CCar myCar;
+	void PrintPrice();
 };
-class My
+void CDriver::PrintPrice()
 {
-private:
-	int age;
-	friend void CCar::PrintInfo(My* my);
-};
-void CCar::PrintInfo(My* my)
-{
-	cout << "Hello" << endl;
-	my->age += 10;
+	myCar.PrintEnginePrice();
+	//cout << myCar.engine.enginePrice << endl;		// 错误！不能在CDriver类的成员函数中访问CEngine类的私有成员，除非直接在CEngine类中声明CDriver类为友元。
 }
-void CDriver::ModifydCar(CCar* pCar, My* my)
+void CCar::PrintEnginePrice()
 {
-	pCar->price += 1000;
-	pCar->PrintInfo(my);
-}
-int MostExpensiveCar(CCar cars[], int total)
-{
-	int maxPrice = -1;
-	for (int i = 0; i < total; ++i)
-	{
-		if (cars[i].price > maxPrice)
-			maxPrice = cars[i].price;
-	}
-	return maxPrice;
+	cout << engine.enginePrice << endl;
 }
 
 int main()
 {
-	CCar car;
 	CDriver driver;
-	My my;
-	driver.ModifydCar(&car, &my);
+	driver.PrintPrice();		// 通过多级递进友元关系，driver 对象打印出了 CEngine 类的私有成员 enginePrice 的值为 1
 	return 0;
 }
 
 // tips: 
-//   1. 定义一个类时，可以把一些函数(包括全局函数和其他类的成员函数)声明为“友元函数”，这样在友元函数内部就可以访问该类对象的私有成员。
-//   2. 注意，不能把其他类的私有成员函数声明为友元。
-//   3. 可以简单地将一个类的名字提前声明，以便在该类的定义出现之前使用使用该类，如第7行的提前声明和第11行的使用。
-//      尽管可以提前声明，但是在一个类的定义出现之前，仍然不能有任何导致该类对象被生成的语句。但使用该类的指针或引用是没有问题的。
-//   4. 友元分为友元函数和友元类。友元关系不能传递。
-
-// tips: 
-//   1. 友元分为友元函数和友元类。
-//   2. 定义一个类时，可以把一些函数(包括全局函数和其他类的成员函数)声明为“友元”(友元函数)，这样在友元函数内部就可以访问该类对象的私有成员。
-//   3. 注意，不能把其他类的私有成员函数声明为友元。编译时会提示“无法访问该私有成员”。
-//   4. 友元关系不能传递。
-//   5. 可以简单地将一个类的名字提前声明，以便在该类的定义出现之前使用使用该类，如第7行的提前声明和第11行的使用。
-//      尽管可以提前声明，但是在一个类的定义出现之前，仍然不能有任何导致该类对象被生成的语句。但使用该类的指针或引用是没有问题的。
-//   6. 第18行将MostExpensiveCar函数声明为CCar的友元函数。这条语句本来就是在声明MostExpensiveCar是一个函数，所以CCar类定义前面就不用声明MostExpensiveCar函数了。
+//   1. 虽然友元关系不能传递,但是可以多级递进友元关系。
+//   2. 友元关系不能传递，即类A是类B的友元，类B是类C的友元，并不能导出类A是类C的友元。
+//      “咱俩是朋友，所以你的朋友就是我的朋友”这句话在C++ 的友元关系上不成立。
