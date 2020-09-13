@@ -17,7 +17,7 @@ class CCar
 private:
 	CEngine engine;
 	void PrintEnginePrice();
-	friend class CDriver;				// 声明 CDriver 为友元类
+	friend class CDriver;					// 声明 CDriver 为友元类
 };
 class CDriver
 {
@@ -28,7 +28,7 @@ public:
 void CDriver::PrintPrice()
 {
 	myCar.PrintEnginePrice();
-	//cout << myCar.engine.enginePrice << endl;		// 错误！不能在CDriver类的成员函数中访问CEngine类的私有成员，除非直接在CEngine类中声明CDriver类为友元。
+	//cout << myCar.engine.enginePrice;	// 错误！友元关系不能传递！不能在CDriver类的成员函数中访问CEngine类的私有成员，除非直接在CEngine类中声明CDriver类为友元。
 }
 void CCar::PrintEnginePrice()
 {
@@ -45,4 +45,4 @@ int main()
 // tips: 
 //   1. 虽然友元关系不能传递,但是可以多级递进友元关系。
 //   2. 友元关系不能传递，即类A是类B的友元，类B是类C的友元，并不能导出类A是类C的友元。
-//      “咱俩是朋友，所以你的朋友就是我的朋友”这句话在C++ 的友元关系上不成立。
+//      “咱俩是朋友，所以你的朋友就是我的朋友”这句话在C++的友元关系上不成立。
