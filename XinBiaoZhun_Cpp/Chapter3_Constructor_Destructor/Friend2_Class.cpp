@@ -27,7 +27,7 @@ void CDriver::ModifyCar()
 }
 void CDriver::PrintPrice()
 {
-	cout << myCar.price << endl;
+	cout << myCar.price << endl;		// PrintPrice是CDriver类的私有成员函数。因为 CDriver 是 CCar 的友元类，故此处可以访问其私有成员
 }
 
 int main()
