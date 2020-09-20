@@ -14,7 +14,7 @@ public:
 	CComplex operator+(double r);
 	friend CComplex operator+(double r, const CComplex& a);		// 友元运算符函数，来处理5+a的情况
 };
-CComplex CComplex::operator+(double r)				// 处理 a+5
+CComplex CComplex::operator+(double r)			// 处理 a+5
 {
 	return CComplex(real + r, imag);
 }
