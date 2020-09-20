@@ -21,7 +21,7 @@ CComplex::operator double()
 int main()
 {
 	CComplex a(4.3, 21.6);
-	cout << (double)a << endl;		// 等价于 a.operator double();	输出 4.3
+	cout << (double)a << endl;			// 等价于 a.operator double();	输出 4.3
 	double n = 100 + a;				// 等价于 double n = 100 + a.operator double();
 	
 	cout << n << endl;				// 输出 104.3
