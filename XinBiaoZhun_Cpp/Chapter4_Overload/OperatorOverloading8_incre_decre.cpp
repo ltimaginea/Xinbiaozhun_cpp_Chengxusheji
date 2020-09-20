@@ -10,11 +10,11 @@ private:
 	int n;
 public:
 	CDemo(int i = 0) :n(i) {}
-	CDemo& operator++();					// 用于前置形式
-	CDemo operator++(int);					// 用于后置形式
+	CDemo& operator++();				// 用于前置形式
+	CDemo operator++(int);				// 用于后置形式
 	operator int();
 	friend CDemo& operator--(CDemo&);		// 用于前置形式
-	friend CDemo operator--(CDemo&, int);	// 用于后置形式
+	friend CDemo operator--(CDemo&, int);		// 用于后置形式
 };
 CDemo& CDemo::operator++()
 {
@@ -53,7 +53,7 @@ int main()
 	cout << d << ",";
 	cout << --d << ",";			// 等价于 operator--(d)
 	cout << d << endl;
-	return 0;					// 程序输出	5,6,7,7,7,6,5,5
+	return 0;				// 最终程序输出	5,6,7,7,7,6,5,5
 }
 
 
