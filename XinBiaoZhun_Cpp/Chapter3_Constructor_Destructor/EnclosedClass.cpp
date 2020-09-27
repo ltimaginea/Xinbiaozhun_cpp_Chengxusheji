@@ -1,4 +1,4 @@
-﻿// 封闭类 (enclosed class)
+﻿// 封闭类 (enclosed class):包含成员对象的类就叫做“封闭类”
 
 #include <iostream>
 
