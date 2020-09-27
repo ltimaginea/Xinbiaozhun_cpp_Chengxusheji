@@ -1,4 +1,4 @@
-﻿// 重载自增、自减运算符
+﻿// 重载赋值运算符 "="
 
 #include <iostream>
 #include <cstring>
@@ -29,7 +29,7 @@ CString::CString(const char* s)				// 类型转换构造函数，使得 CString 
 	else
 		str = NULL;
 }
-CString::CString(const CString& s)
+CString::CString(const CString& s)			// 深拷贝
 {
 	if (s.str)
 	{
@@ -56,7 +56,7 @@ CString& CString::operator=(const char* s)		// 重载 "="，使得 obj="Good Luc
 		str = NULL;
 	return *this;
 }
-CString& CString::operator=(const CString& s)
+CString& CString::operator=(const CString& s)		// 深拷贝
 {
 	if (str == s.str)
 		return *this;
