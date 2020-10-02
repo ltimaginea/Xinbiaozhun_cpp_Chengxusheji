@@ -20,7 +20,7 @@ CComplex CComplex::operator+(double r)			// 处理 a+5
 }
 CComplex operator+(double r, const CComplex& a)		// 处理 5+a
 {
-	return CComplex(r + a.real, r + a.imag);
+	return CComplex(r + a.real, a.imag);
 }
 
 int main()
