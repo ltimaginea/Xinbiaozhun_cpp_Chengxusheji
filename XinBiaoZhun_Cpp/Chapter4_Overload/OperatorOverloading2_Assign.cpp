@@ -94,7 +94,7 @@ int main()
 
 	CString& ss = s;
 	CString& sss = s;
-	sss = ss;						// 第66，67行，s=s 的情况
+	sss = ss;					// 第66，67行，s=s 的情况
 
 	CString s11, s12;
 	s11 = "this";
