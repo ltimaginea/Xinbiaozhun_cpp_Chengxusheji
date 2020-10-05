@@ -21,7 +21,8 @@ public:
 };
 CString::CString(const char* s)				// 类型转换构造函数，使得 CString s2 = "hello!"; 能够成立
 {
-	/* 这是为了应对这样的情况：s = "Shenzhou 8!"; 这时便需要释放先前分配的动态内存。但是因为"="已经被重载，这样的情况并不会触发这个类型转换构造函数，所以可以注释掉这里。
+	/* 这是为了应对这样的情况：CString s = "hello!"; s = "Shenzhou 8!"; 这时便需要释放先前分配的动态内存。
+	   但是因为"="已经有被重载 CString& operator=(const char* s); ，这样的情况并不会触发这个类型转换构造函数，所以可以注释掉这里。
 	if (str)
 		delete[] str;
 	*/
@@ -93,7 +94,7 @@ int main()
 
 	CString& ss = s;
 	CString& sss = s;
-	sss = ss;				// 模拟第66，67行，s=s 的情况
+	sss = ss;						// 第66，67行，s=s 的情况
 
 	CString s11, s12;
 	s11 = "this";
