@@ -21,6 +21,10 @@ public:
 };
 CString::CString(const char* s)				// 类型转换构造函数，使得 CString s2 = "hello!"; 能够成立
 {
+	/* 这是为了应对这样的情况：s = "Shenzhou 8!"; 这时便需要释放先前分配的动态内存。但是因为"="已经被重载，这样的情况并不会触发这个类型转换构造函数，所以可以注释掉这里。
+	if (str)
+		delete[] str;
+	*/
 	if (s)
 	{
 		str = new char[strlen(s) + 1];
@@ -58,7 +62,7 @@ CString& CString::operator=(const char* s)		// 重载 "="，使得 obj="Good Luc
 }
 CString& CString::operator=(const CString& s)		// 深拷贝
 {
-	if (str == s.str)
+	if (this == &s)			// 为了应对 s=s 这样的情况
 		return *this;
 	if (str)
 		delete[] str;
@@ -86,11 +90,10 @@ int main()
 	cout << s2.c_str() << endl;
 	s = "Shenzhou 8!";				// 等价于 s.operator=("Shenzhou 8!");
 	cout << s.c_str() << endl;
-	char* tmp = (char*)s.c_str();
-	cout << tmp << endl;
-	tmp[2] = 'A';
-	cout << tmp << endl;
-	cout << s.c_str() << endl;
+
+	CString& ss = s;
+	CString& sss = s;
+	sss = ss;				// 模拟第66，67行，s=s 的情况
 
 	CString s11, s12;
 	s11 = "this";
@@ -107,4 +110,6 @@ int main()
 
 // tips: 
 //   1. C++规定，"=" 只能重载为成员函数。
-//   2. 将一个指针变量指向的内容复制到另一个指针变量指向的地方，这样的拷贝就叫做“深拷贝”。
+//   2. 没有经过重载，"=" 的作用就是把左边的变量变得和右边的相等，即执行逐个字节拷贝的工作，对于指针变量，会使得两个指针指向同一个地方，这样的拷贝就叫做“浅拷贝”。
+//   3. 将一个指针变量指向的内容复制到另一个指针变量指向的地方，这样的拷贝就叫做“深拷贝”。
+//   4. 第66，67行是为了应付这样的情况：s=s;
