@@ -103,7 +103,7 @@ int main()
 
 	CString s21;
 	s21 = "Transformers";
-	CString s22(s2);		// 深拷贝
+	CString s22(s21);		// 深拷贝
 	return 0;
 }
 
