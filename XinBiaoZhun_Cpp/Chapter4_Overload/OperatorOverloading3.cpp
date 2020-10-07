@@ -1,4 +1,4 @@
-﻿// 重载赋值运算符 "[]"
+﻿// 重载运算符 "[]"
 
 #include <iostream>
 #include <cstring>
