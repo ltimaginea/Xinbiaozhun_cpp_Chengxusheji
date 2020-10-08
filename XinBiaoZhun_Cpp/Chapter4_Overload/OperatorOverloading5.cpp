@@ -115,13 +115,16 @@ CMyString& CMyString::operator+=(const CMyString& str)
 	char* tmp = new char[size + str.size + 2];
 	strcpy(tmp, ptr);
 	strcat(tmp, str.ptr);
-	/*size = size + str.size;
-	delete[] ptr;
-	ptr = tmp;*/
 	CMyString os(tmp);
 	delete[] tmp;
 	*this = os;
 	return *this;
+	/* 或者这样
+	size = size + str.size;
+	delete[] ptr;
+	ptr = tmp;
+	return *this;
+	*/
 }
 char& CMyString::operator[](int i) const
 {
