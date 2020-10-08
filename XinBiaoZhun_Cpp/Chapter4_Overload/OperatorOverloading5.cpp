@@ -27,6 +27,7 @@ public:
 	char& operator[](int i) const;
 	CMyString operator()(int start, int len) const;
 	friend ostream& operator<<(ostream& os, const CMyString& str);
+	friend CMyString operator+(const char* c, const CMyString& str);
 };
 CMyString::CMyString()
 {
