@@ -7,7 +7,7 @@ class CBase
 {
 
 };
-class CDerivide :public CBase
+class CDerived :public CBase
 {
 
 };
@@ -15,11 +15,11 @@ class CDerivide :public CBase
 int main()
 {
 	CBase base;
-	CDerivide derivide;
-	base = derivide;
-	CBase& ref = derivide;
-	CBase* pbase = &derivide;
-	CDerivide* pder = &derivide;
+	CDerived derived;
+	base = derived;
+	CBase& ref = derived;
+	CBase* pbase = &derived;
+	CDerived* pder = &derived;
 	pbase = pder;
 	return 0;
 }
