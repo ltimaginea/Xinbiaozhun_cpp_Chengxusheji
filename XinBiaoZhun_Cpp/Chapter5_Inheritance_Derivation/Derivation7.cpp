@@ -23,7 +23,7 @@ int main()
 {
 	CDerivide d1, d2;
 	CDerivide d3(d2);		// 会调用CBase::CBase(const CBase& b)，输出 CBase::copy constructor is called.
-	d1 = d2;				// 会调用CBase::operator=(const CBase& b)，输出 CBase::operator= is called.
+	d1 = d2;			// 会调用CBase::operator=(const CBase& b)，输出 CBase::operator= is called.
 	return 0;
 }
 
