@@ -22,7 +22,7 @@ public:
 int main()
 {
 	CDerived derived;
-	derived.func();
+	derived.func();			// 输出 CDerived::f()
 	return 0;
 }
 
