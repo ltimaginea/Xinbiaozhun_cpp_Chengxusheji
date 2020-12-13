@@ -22,7 +22,8 @@ class CDerived2 :public CDerived
 
 int main()
 {
-	cout << sizeof(CBase) << "," << sizeof(CDerived) << "," << sizeof(CDerived2) << endl;	// 输出 4,8,8
+	// 输出(32位程序指针为4字节) 4,8,8 或 (64位程序指针为8字节) 4,16,16 (也可能是其他，有对齐问题，示例64位程序中，CDerived类其成员类型的最大值为指针8字节，则以8字节对齐，所以输出 4,16,16)
+	cout << sizeof(CBase) << "," << sizeof(CDerived) << "," << sizeof(CDerived2) << endl;
 	return 0;
 }
 
