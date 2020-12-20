@@ -36,7 +36,7 @@ int main()
 {
 	int a = 4;
 	double b = 4.5;
-	cout << Compare<double>(a, b) << endl;		// 输出 -1
+	cout << Compare<double>(a, b) << endl;			// 输出 -1
 	cout << Compare<int>(a, b) << endl;			// 输出 0
 	cout << Inc<double>(a) / 2 << endl;			// 输出 2.5
 	cout << Inc<int>(a) / 2 << endl;			// 输出 2
