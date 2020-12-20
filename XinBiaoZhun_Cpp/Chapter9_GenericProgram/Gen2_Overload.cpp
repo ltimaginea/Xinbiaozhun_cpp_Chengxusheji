@@ -47,7 +47,7 @@ int main()
 	double m = 4.1, n = 5.1;
 	Max(m, n);				// 输出 Function Max    5.1
 	Max(i, j);				// 输出 Template Max1   5
-	Max(&m, &n);			// 输出 Template Max2   5.1
+	Max(&m, &n);				// 输出 Template Max2   5.1
 	Max(m, i);				// 输出 Template Max3   4.1
 	
 	return 0;
