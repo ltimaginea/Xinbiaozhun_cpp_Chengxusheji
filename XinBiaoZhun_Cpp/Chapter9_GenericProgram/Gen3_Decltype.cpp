@@ -5,10 +5,10 @@
 using namespace std;
 
 template <typename It>
-auto fcn(It beg, It end) -> decltype(*beg)
+auto fcn(It beg, It end) -> decltype(*beg)			// 尾置返回类型
 {
-	typedef decltype(*beg) begType;
-	begType tmp = *beg;			// 或 decltype(*beg) tmp = *beg;
+	typedef decltype(*beg) begRefType;
+	begRefType tmp = *beg;					// 或 decltype(*beg) tmp = *beg;
 	return tmp;
 }
 
