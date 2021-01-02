@@ -7,6 +7,8 @@ using namespace std;
 template <typename T>
 class A
 {
+private:
+	T a;
 public:
 	template <typename T2>
 	void func(T2 t);
