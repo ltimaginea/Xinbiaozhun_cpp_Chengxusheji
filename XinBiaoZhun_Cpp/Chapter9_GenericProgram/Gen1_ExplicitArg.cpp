@@ -36,7 +36,12 @@ int main()
 {
 	int a = 4;
 	double b = 4.5;
-	// cout << Compare(a, b) << endl;			// 错误！模板参数不匹配
+	/*
+	* 错误！模板参数不匹配。因为无法从Compare模板生成与之类型完全匹配的模板函数Compare(int,double)。
+	* 虽然可以从Compare模板生成int Compare(double,double)和int Compare(int,int)，但是到底应该把a自动转换成double类型后调用前者还是应该把b自动转换成int类型后调用后者呢？
+	* 这是存在二义性的，因此编译器会报错。
+	*/
+	// cout << Compare(a, b) << endl;
 	cout << Compare<double>(a, b) << endl;			// 输出 -1
 	cout << Compare<int>(a, b) << endl;			// 输出 0
 	cout << Inc<double>(a) / 2 << endl;			// 输出 2.5
