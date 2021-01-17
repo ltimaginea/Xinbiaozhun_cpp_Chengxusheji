@@ -23,7 +23,6 @@ public:
 		因此在类模板内声明成员 运算符函数operator= 时，它的返回值类型和形参类型可以简写为 CArray& 。
 	*/
 	CArray& operator=(const CArray& a);
-	
 };
 
 template <typename T>
