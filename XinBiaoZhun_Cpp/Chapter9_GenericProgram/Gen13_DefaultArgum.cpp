@@ -15,7 +15,7 @@ private:
 
 // 我们为此模板参数提供了默认实参，并为其对应的函数参数也提供了默认实参
 template <typename T1, typename T2 = const char*>
-void print(T1 a, T2 b = "Parameter")
+void Print(T1 a, T2 b = "Parameter")
 {
 	cout << a << "\t" << b << endl;
 }
@@ -23,11 +23,11 @@ void print(T1 a, T2 b = "Parameter")
 int main()
 {
 	CNumbers<double> n1;
-	print(23, 23.3);				// 输出 23      23.3
+	Print(23, 23.3);				// 输出 23      23.3
 
 	// 用空<>表示我们希望使用默认类型
 	CNumbers<> n2;
-	print(233);					// 输出 233     Parameter
+	Print(233);					// 输出 233     Parameter
 	return 0;
 }
 
