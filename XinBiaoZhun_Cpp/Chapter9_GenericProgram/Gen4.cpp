@@ -25,6 +25,7 @@ public:
 	CFraction(int n, int d) :numerator(n), denominator(d) {}
 	bool operator<(const CFraction& f) const
 	{
+		// 为避免除法产生的浮点误差，用乘法判断两个分数的大小关系
 		if (denominator * f.denominator > 0)
 			return numerator * f.denominator < denominator * f.numerator;
 		else
@@ -32,6 +33,7 @@ public:
 	}
 	bool operator==(const CFraction& f) const
 	{
+		// 为避免除法产生的浮点误差，用乘法判断两个分数的大小关系
 		return numerator * f.denominator == denominator * f.numerator;
 	}
 
