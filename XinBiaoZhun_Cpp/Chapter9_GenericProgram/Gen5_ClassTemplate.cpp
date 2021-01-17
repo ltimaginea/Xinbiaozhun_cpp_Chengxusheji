@@ -10,11 +10,11 @@ public:
 	T1 key;
 	T2 value;
 	Pair(T1 k, T2 v) :key(k), value(v) {}
-	bool operator<(const Pair<T1, T2>& p) const;
+	bool operator<(const Pair& p) const;
 };
 
 template <typename T1,typename T2>
-bool Pair<T1, T2>::operator<(const Pair<T1, T2>& p) const
+bool Pair<T1, T2>::operator<(const Pair& p) const
 {
 	return key < p.key;
 }
