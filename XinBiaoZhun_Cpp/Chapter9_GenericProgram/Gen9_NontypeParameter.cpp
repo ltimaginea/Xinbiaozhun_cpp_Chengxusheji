@@ -10,11 +10,11 @@ class CArray
 private:
 	T my_array[size];
 public:
-	void print();
+	void Print();
 };
 
 template <typename T, int size>
-void CArray<T, size>::print()
+void CArray<T, size>::Print()
 {
 	for (int i = 0; i < size; i++)
 	{
