@@ -1,4 +1,4 @@
-﻿// 类模板与继承
+﻿// 类模板和友元
 
 #include <iostream>
 
@@ -37,7 +37,7 @@ class Pal;
 class C
 {
 public:
-	// 用类C实例化的Pal时C的一个友元
+	// 用类C实例化的Pal是类C的一个友元
 	friend class Pal<C>;
 	// Pal2的所有实例都是C的友元，这种情况无须前置声明。
 	template <typename T>
