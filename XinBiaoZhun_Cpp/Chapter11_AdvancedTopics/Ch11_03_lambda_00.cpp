@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 	int a[4] = { 2,11,33,4 };
-	sort(begin(a), end(a), [](int i, int j)->bool { return i % 10 > j % 10; });
+	sort(begin(a), end(a), [](int i, int j)->bool { return i % 10 > j % 10; });		// 数组a按个位数递减排序
 	for_each(begin(a), end(a), [](int i) { cout << i << " "; });
 	cout << endl;
 	int total = 0;
