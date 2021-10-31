@@ -23,8 +23,6 @@ CString::CString(const char* s)				// 类型转换构造函数，使得 CString 
 {
 	/* 这是为了应对这样的情况：CString s = "hello!"; s = "Shenzhou 8!"; 这时便需要释放先前分配的动态内存。
 	   但是因为"="已经有被重载 CString& operator=(const char* s); ，这样的情况并不会触发这个类型转换构造函数，所以可以注释掉这里。
-	if (str)
-		delete[] str;
 	*/
 	if (s)
 	{
@@ -50,30 +48,42 @@ const char* CString::c_str() const
 }
 CString& CString::operator=(const char* s)		// 重载 "="，使得 obj="Good Luck," 能够成立
 {
-	if (str)
-		delete[] str;
+	char* str_tmp = NULL;
+
 	if (s)
 	{
-		str = new char[strlen(s) + 1];
-		strcpy(str, s);
+		str_tmp = new char[strlen(s) + 1];
+		strcpy(str_tmp, s);
 	}
 	else
-		str = NULL;
+		str_tmp = NULL;
+
+	if (str)
+		delete[] str;
+
+	str = str_tmp;
+
 	return *this;
 }
 CString& CString::operator=(const CString& s)		// 深拷贝
 {
-	if (this == &s)			// 为了应对 s=s 这样的情况
+	if (this == &s)			// 为了应对 s=s 这样的情况。其实这里的自赋值判断是多余的，因为下面的写法可以处理自赋值的情况，同时还是异常安全的。
 		return *this;
-	if (str)
-		delete[] str;
+
+	char* str_tmp = NULL;
 	if (s.str)
 	{
-		str = new char[strlen(s.str) + 1];
-		strcpy(str, s.str);
+		str_tmp = new char[strlen(s.str) + 1];
+		strcpy(str_tmp, s.str);
 	}
 	else
-		str = NULL;
+		str_tmp = NULL;
+
+	if (str)
+		delete[] str;
+
+	str = str_tmp;
+
 	return *this;
 }
 CString::~CString()
@@ -94,7 +104,7 @@ int main()
 
 	CString& ss = s;
 	CString& sss = s;
-	sss = ss;					// 第66，67行，s=s 的情况
+	sss = ss;					// 第70，71行，s=s 的情况
 
 	CString s11, s12;
 	s11 = "this";
@@ -113,4 +123,4 @@ int main()
 //   1. C++规定，"=" 只能重载为成员函数。
 //   2. 没有经过重载，"=" 的作用就是把左边的变量变得和右边的相等，即执行逐个字节拷贝的工作，对于指针变量，会使得两个指针指向同一个地方，这样的拷贝就叫做“浅拷贝”。
 //   3. 将一个指针变量指向的内容复制到另一个指针变量指向的地方，这样的拷贝就叫做“深拷贝”。
-//   4. 第66，67行是为了应付这样的情况：s=s;
+//   4. 第70，71行是为了应付这样的情况：s=s;
